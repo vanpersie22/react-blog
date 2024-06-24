@@ -9,7 +9,11 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      outline: {
+        green: '2px solid #10B981', // Example for a green outline
+      }
+    },
   },
   plugins: [
     flowbite.plugin(),
