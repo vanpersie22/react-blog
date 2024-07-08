@@ -27,7 +27,7 @@ export default function Header() {
                 <AiOutlineSearch />
             </Button>
             <div className='flex gap-2 md:order-2'>
-                <Button className='w-12 h-10  sm:inline' color='gray' pill 
+                <Button className='w-12 h-10  sm:inline ' color='gray' pill 
                 onClick={()=> dispatch(toggleTheme())}>
 
                     {theme === 'light' ? <FaSun /> : <FaMoon />}
@@ -35,6 +35,7 @@ export default function Header() {
                 {currentUser ? (
                     <Dropdown
                     arrowIcon={false}
+                    inline
                     label={
                         <Avatar
                         alt='user-avatar'
