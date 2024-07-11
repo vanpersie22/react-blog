@@ -8,7 +8,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import  {updateStart, updateSuccess, updateFailure} from '../redux/user/userSlice'
 import { useDispatch } from 'react-redux'
-import { deleteUserStart, deleteUserSuccess, deleteUserFailure } from '../redux/user/userSlice'
+import { deleteUserStart, deleteUserSuccess, deleteUserFailure, logOutSuccess } from '../redux/user/userSlice'
 
 
 const DashProfile = () => {
@@ -56,8 +56,7 @@ const DashProfile = () => {
                 setImageFileUploadProgress(progress.toFixed(0));
             },
             (error) => {
-                setImageFileUploadError
-                    ('An error occurred while uploading the image(File Must be less than 2mb');
+                setImageFileUploadError('An error occurred while uploading the image(File Must be less than 2mb');
 
                 setImageFileUploadProgress(null);
                 setImageFile(null);
@@ -132,6 +131,21 @@ const DashProfile = () => {
 
         
     };
+
+    const handleLogOut = async () => {
+        try {
+            const res = await fetch('/api/user/logout', {
+                method: 'POST',
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                console.log(data.message);
+            } else 
+            dispatch(logOutSuccess());
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <div className='max-w-lg mx-auto p-3 w-full'>
             <h1 className='my-7 text-center font-semibold text-2xl'>Profile</h1>
@@ -184,7 +198,7 @@ const DashProfile = () => {
             </form>
             <div className='text-green-600 flex justify-between mt-5'>
                 <span onClick={()=>setShowModel(true)} className='cursor-pointer' >Delete Account</span>
-                <span className='cursor-pointer' >Log Out</span>
+                <span onClick={handleLogOut} className='cursor-pointer' >Log Out</span>
             </div>
             {updateUserSuccess && <Alert color='success'>{updateUserSuccess}</Alert>}
             {updateUserError && <Alert color='failure'>{updateUserError}</Alert>}
