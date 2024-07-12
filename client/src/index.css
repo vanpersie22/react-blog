@@ -6,6 +6,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  height: 100vh;
+}
+
+.ql-editor {
+  font-size: 1.05rem;
+}
+
 /* For main headings, using a bold weight */
 .noto-sans-main-heading {
   font-family: "Noto Sans", sans-serif;
