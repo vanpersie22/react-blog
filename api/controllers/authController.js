@@ -83,7 +83,7 @@ export const google = async (req, res, next) => {
             res.status(200).cookie('access_token', token, { httpOnly: true }).json(rest);
         } else {
             // User exists, generate a token for existing user
-            const token = jwt.sign({ id: user._id, isAdmin: User.isAdmin }, process.env.JWT_SECRET);
+            const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
             const { password, ...rest } = user._doc;
             res.status(200).cookie('access_token', token, { httpOnly: true }).json(rest);
         }

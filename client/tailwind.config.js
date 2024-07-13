@@ -1,4 +1,5 @@
 const flowbite = require("flowbite-react/tailwind");
+const scrollbar = require('tailwind-scrollbar');
 
 module.exports = {
   content: [
@@ -14,5 +15,6 @@ module.exports = {
   },
   plugins: [
     flowbite.plugin(),
+    scrollbar,
   ],
 };
