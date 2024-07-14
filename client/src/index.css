@@ -53,3 +53,33 @@ body {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+
+
+.post-content p{
+  margin-bottom: 1.5rem;
+}
+.post-content h1{
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: sans-serif;
+  margin-bottom: 1.5rem 0;
+}
+
+.post-content h2{
+  font-size: 1.4rem;
+  font-family: sans-serif;
+  margin: 1.5rem 0;
+}
+
+.post-content a{
+  color: rgba(73, 199, 149);
+  text-decoration: none;
+}
+
+.post-content a:hover{
+  text-decoration: underline;
+}
+
+.dark .post-content a{
+  color: rgba(73, 199, 149);
+}
