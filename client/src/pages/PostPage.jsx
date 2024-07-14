@@ -2,6 +2,7 @@ import { Button, Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import CallToAction from '../components/CallToAction';
 
 
 const PostPage = () => {
@@ -48,11 +49,11 @@ if (loading) {
 }
   return (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
-        <h1 className='text-3xl mt-10 p-3 text-center max-w-2xl mx-auto font-serif
+        <h1 className='text-3xl mt-10 p-3 text-center max-w-4xl mx-auto font-serif
         lg:text-4xl'>{post && post.title}</h1>
         <Link to={`/search?category=${post && post.category}` }
-        className='self-center mt-4'>
-        <Button color='gray' pill size='xs'>{post && post.category}</Button>
+        className='self-center mt-4 '>
+        <Button className='bg-green-500' pill size='xs'>{post && post.category}</Button>
         </Link>
         <img src={post && post.image} alt={post && post.title} className='mt-8
         p-3 max-h-[600px] w-full object cover'/>
@@ -63,7 +64,11 @@ if (loading) {
 
         </div>
 
-        <div className='p-3 max-w-3xl mx-auto post-content' dangerouslySetInnerHTML={{__html: post && post.content }}>
+        <div className='p-3 max-w-3xl mx-auto post-content text-serif' dangerouslySetInnerHTML={{__html: post && post.content }}>
+
+        </div>
+        <div className='max-w-4xl mx-auto w-full'>
+            <CallToAction/>
 
         </div>
     </main>
