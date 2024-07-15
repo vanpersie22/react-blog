@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import CallToAction from '../components/CallToAction';
+import CommentSection from '../components/CommentSection';
 
 
 const PostPage = () => {
@@ -71,6 +72,7 @@ if (loading) {
             <CallToAction/>
 
         </div>
+        <CommentSection postId={post && post._id}/>
     </main>
   );
   

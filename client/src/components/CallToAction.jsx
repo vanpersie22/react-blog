@@ -8,10 +8,10 @@ const CallToAction = () => {
         rounded-br-3xl text-center'>
         <div className='flex-1 justify-center flex flex-col'>
             <h2 className='text-2xl'>
-                Need help with any coding project/class assignments?
+                Need help with any coding project || class assignments?
             </h2>
             <p className='text-gray-500 my-2'>
-                Check out our amazing plans || get in touch with us now
+                Check out our amazing <span className='text-green-500'>WriteAssignment</span> plans || get in touch with us now
             </p>
             <Button className="bg-green-500 noto-sans-button-text border border-green-500 rounded-tl-xl
             rounded-bl-none">
