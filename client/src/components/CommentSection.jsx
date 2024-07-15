@@ -1,8 +1,9 @@
-import { Alert, Button, Textarea } from 'flowbite-react'
+import { Alert, Button, Modal, Textarea } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Comment from './Comment'
+import { useNavigate } from 'react-router-dom'
 
 
 const CommentSection = ({ postId }) => {
@@ -10,6 +11,9 @@ const CommentSection = ({ postId }) => {
     const [comment, setComment] = useState('')
     const [commentError, setCommentError] = useState('')
     const [comments, setComments] = useState([])
+    const [showModal, setShowModal] = useState(false)
+    const [commentToDelete, setCommentToDelete] = useState(null)
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,13 +59,62 @@ const CommentSection = ({ postId }) => {
         };
         fetchComments();
     }, [postId]);
-        
 
+    const handleLike = async (commentId) => {
+        try {
+            if (!currentUser) {
+                navigate('/sign-in')
+                return;
+            }
+            const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+                method: 'PUT',
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setComments(comments.map((comment) =>
+                    comment._id === commentId ? {
+                        ...comment,
+                        likes: data.likes,
+                        numberOfLikes: data.likes.length,
+                    } : comment
+                ));
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
+
+    }
+
+    const handleEdit = async (comment, editedContent) => {
+        setComments(comments.map((c) =>
+            c._id === comment._id ? { ...c, content: editedContent } : c
+        ))
+    }
+
+    const handleDelete = async (commentId) => {
+        setShowModal(false);
+        try {
+            if (!currentUser) {
+                navigate('/sign-in')
+                return;
+            }
+            const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
+                method: 'DELETE',
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setComments(comments.filter((comment) => comment._id !== commentId))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    };
     return (
         <div className='max-w-3xl mx-auto w-full p-3'>
             {currentUser ? (
                 <div className='flex items-center gap-1 my-5 text-gray-500 text-sm'>
-                    <p>Take a bite 🍪</p>
+                    <p>Alright! take a bite 🍪</p>
 
                     <Link to={'/dashboard?tab=profile'}
                         className='text-md text-green-600 hover:underline'>
@@ -98,29 +151,49 @@ const CommentSection = ({ postId }) => {
                             <Button type='submit' className='bg-green-500 text-white p-2 rounded-md'>Post Comment</Button>
 
                         </div>
-                        </form>
-                    )}
-                    {comments.length === 0 ? (
-                        <p className='text-sm my-5 '>No comments yet</p>
-                    ) : (
-                        <>
-                         <div className='text-sm my-5 flex items-center gap-1'>
-                            <p>Comments</p>
-                            <div className='border border-gray-400 py-1 px-2 rounded-sm'>
-                                <p>{comments.length}</p>
-                                </div> 
+                    </form>
+                )}
+            {comments.length === 0 ? (
+                <p className='text-sm my-5 '>No comments yet</p>
+            ) : (
+                <>
+                    <div className='text-sm my-5 flex items-center gap-1'>
+                        <p>Comments</p>
+                        <div className='border border-gray-400 py-1 px-2 rounded-sm'>
+                            <p>{comments.length}</p>
                         </div>
-                        {
-                           comments.map((comment) => (
-                            <Comment key={comment._id} comment={comment} />
-                            
-                           ))
-                        }
-                        </>
-                       
-                        
-                    )}
-                
+                    </div>
+                    {
+                        comments.map((comment) => (
+                            <Comment key={comment._id} comment={comment}
+                                onLike={handleLike}
+                                onEdit={handleEdit}
+                                onDelete={() => {
+                                    setShowModal(true);
+                                    setCommentToDelete(comment._id);
+                                }}
+                            />
+
+                        ))
+                    }
+                </>
+
+
+            )}
+            <Modal show={showModal} onClose={() => setShowModal(false)}
+                popup size='md'>
+                <Modal.Header />
+                <Modal.Body>
+                    <h1 className='text-center text-2xl font-semibold'>Delete Account</h1>
+                    <p className='text-center text-sm text-gray-500'>Want to remove comment?</p>
+                    <div className='flex justify-between mt-5'>
+                        <Button color='failure' onClick={() => setShowModal(false)}>Cancel</Button>
+                        <Button onClick={() => handleDelete(commentToDelete)} color='success'>Delete</Button>
+                    </div>
+
+                </Modal.Body>
+
+            </Modal>
         </div>
     )
 }
