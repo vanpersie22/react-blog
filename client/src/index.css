@@ -10,6 +10,8 @@ body {
   height: 100vh;
 }
 
+
+
 .ql-editor {
   font-size: 1.05rem;
 }
@@ -85,3 +87,25 @@ body {
 .dark .post-content a{
   color: rgba(73, 199, 149);
 }
+
+.logo {
+
+  width: 180px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 150px;
+  }
+
+ .mylogo form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+
+  }
+ }
+  

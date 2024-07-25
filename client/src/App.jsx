@@ -16,6 +16,7 @@ import UpdatePost from './pages/UpdatePost'
 import PostPage from './pages/PostPage'
 import ScrollToTop from './components/ScrollToTop'
 import Search from './pages/Search'
+import Publications from './pages/Publications'
 
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
         
       
         <Route path='/projects' element={<Projects />} />
+        <Route path='/publications' element={<Publications />} />
         <Route path='/post/:postSlug' element={<PostPage />} />
       </Routes>
       <Footer/>

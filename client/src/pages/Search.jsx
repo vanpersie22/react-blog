@@ -157,7 +157,7 @@ const Search = () => {
 
                     {
                         showMore && (
-                            <Button className='bg-green-500 dark:bg-teal-500 p-7 w-full ' onClick={handleShowMore}>
+                            <Button className='bg-green-500 dark:bg-teal-500 w-full' onClick={handleShowMore}>
                                 Load more
                             </Button>
                         )

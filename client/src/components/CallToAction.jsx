@@ -1,5 +1,6 @@
 import { Button } from 'flowbite-react'
 import React from 'react'
+import { assets } from '../assets/assets'
 
 const CallToAction = () => {
   return (
@@ -22,7 +23,7 @@ const CallToAction = () => {
                     </Button>
         </div>
         <div className='p-7 flex-1'>
-            <img src="https://upskillie.com/blog/assets/Coding-Coffee.jpg" alt="" />
+            <img src={assets.hire_me} alt="" />
         </div>
 
     </div>
