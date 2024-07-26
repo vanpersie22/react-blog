@@ -90,10 +90,19 @@ body {
 
 .logo {
 
-  width: 160px;
+  width: 150px;
 }
 
 .mylogo {
-  padding: 5px 5px 0;
+  padding: 10px 5px 5px;
 
+}
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 150px;
+  }
+  .mylogo {
+    padding: 10px 5px 5px;
+  }
+  
 }

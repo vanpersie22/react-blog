@@ -83,9 +83,9 @@ export default function Header() {
             </Modal>
 
             <div className='flex gap-2 md:order-2'>
-                <Button className='w-12 h-10 sm:inline border-none' color='gray' pill onClick={() => dispatch(toggleTheme())}>
-                    {theme === 'light' ? <FaSun /> : <FaMoon />}
-                </Button>
+    <Button className='w-12 h-10 sm:inline border-none flex items-center justify-center' color='gray' pill onClick={() => dispatch(toggleTheme())}>
+        {theme === 'light' ? <FaSun /> : <FaMoon />}
+    </Button>
                 {currentUser ? (
                     <Dropdown
                         arrowIcon={false}
