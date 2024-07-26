@@ -61,12 +61,12 @@ export default function Header() {
                 )}
             </Link>
             <form onSubmit={handleSubmit}>
-                <TextInput type="text" placeholder="Search" rightIcon={AiOutlineSearch} 
-                className='hidden lg:inline' value={searchTerm} 
-                onChange={(e) => setSearchTerm(e.target.value)} />
-            </form> 
+                <TextInput type="text" placeholder="Search" rightIcon={AiOutlineSearch}
+                    className='hidden lg:inline' value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)} />
+            </form>
 
-            <Button className='w-12 h-10 lg:hidden' color='green' pill onClick={() => setIsModalOpen(true)}>
+            <Button className='w-12 h-10 lg:hidden outline-none' color='green' pill onClick={() => setIsModalOpen(true)}>
                 <AiOutlineSearch />
             </Button>
 
@@ -74,18 +74,18 @@ export default function Header() {
                 <Modal.Header>Search</Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSubmit}>
-                        <TextInput type="text" placeholder="Search" rightIcon={AiOutlineSearch} 
-                        value={searchTerm} 
-                        onChange={(e) => setSearchTerm(e.target.value)} />
-                        <Button type="submit" color='green' className='mt-4'>Search</Button>
+                        <TextInput type="text" placeholder="Search" rightIcon={AiOutlineSearch}
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)} />
+                        <Button type="submit" color='green' className='mt-4 outline-none'>Search</Button>
                     </form>
                 </Modal.Body>
             </Modal>
 
             <div className='flex gap-2 md:order-2'>
-    <Button className='w-12 h-10 sm:inline border-none flex items-center justify-center' color='gray' pill onClick={() => dispatch(toggleTheme())}>
-        {theme === 'light' ? <FaSun /> : <FaMoon />}
-    </Button>
+                <Button className='w-12 h-10 sm:inline flex items-center justify-center focus:outline-none focus:ring-0' color='gray' pill onClick={() => dispatch(toggleTheme())}>
+                    {theme === 'light' ? <FaSun /> : <FaMoon />}
+                </Button>
                 {currentUser ? (
                     <Dropdown
                         arrowIcon={false}
