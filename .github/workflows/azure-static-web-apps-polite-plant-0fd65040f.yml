@@ -20,15 +20,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-
-      - name: Install server dependencies
-        run: npm install
         working-directory: api
 
-      - name: Install client dependencies and build
-        run: |
-          npm install --prefix client
-          npm run build --prefix client
+      - name: Install dependencies
+        run: npm install
+        working-directory: api
 
       - name: Run tests
         run: npm run test --if-present
