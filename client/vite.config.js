@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'writeapi-heaxedgffbhdhccs.eastus-01.azurewebsites.net',
         secure: false,
       },
     },
