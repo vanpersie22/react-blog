@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://writeapii.azurewebsites.net',
+        target: 'https://writeapii-bedsc0afgfb8dyh7.westus-01.azurewebsites.net',
         secure: false,
       },
     },
