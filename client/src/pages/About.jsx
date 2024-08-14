@@ -16,10 +16,12 @@ const About = () => {
             <p>At WriteAssignment, we believe that every student deserves access to high-quality academic writing assistance. That's why we work hard to connect you with the best writers in the industry. Our platform is easy to use, secure, and reliable. We are committed to helping you achieve your academic goals.
             </p>
 
+            <p>Whatsapp: <a href="https://wa.me/2347065444621" className='whatsapp'>+234 7065444621</a></p>
+<p>Email: <a href="mailto:ezealijonas@gmail.com" className='whatsapp'>ezealijonas@gmail.com</a></p>
           </div>
         </div>
       </div>
-        
+
     </div>
   )
 }
