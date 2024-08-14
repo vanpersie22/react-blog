@@ -41,7 +41,7 @@ export default function FooterCom() {
                                     Sign Up
                                 </Footer.Link>
                                 <Footer.Link
-                                    href='/contact'>
+                                    href='/about'>
                                     Contact Me
                                 </Footer.Link>
                             </Footer.LinkGroup>
@@ -88,7 +88,7 @@ export default function FooterCom() {
                 </div>
                 <Footer.Divider />
                 <div className='w-full sm:flex sm:items-center sm:justify-between'>
-                    <Footer.Copyright href='https://writeassignment.net' by='Writeassignment.net' year={new Date().getFullYear()} />
+                    <Footer.Copyright href='https://writeassignment.online' by='Writeassignment' year={new Date().getFullYear()} />
                     <div className='flex gap-6 sm:mt-4 mt-4 sm:justify-center'>
                         <Footer.Icon href='#' icon={BsFacebook} />
                         <Footer.Icon href='#' icon={BsTwitter} />
