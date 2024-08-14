@@ -97,6 +97,12 @@ body {
   padding: 10px 5px 5px;
 
 }
+
+.whatsapp {
+  color: green;
+  font-size: 22px;
+  font-family: 'Courier New', Courier, monospace;
+}
 @media screen and (max-width: 768px) {
   .logo {
     width: 150px;
